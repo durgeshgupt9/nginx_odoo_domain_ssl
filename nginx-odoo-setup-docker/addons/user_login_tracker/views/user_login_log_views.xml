@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_user_login_log_tree" model="ir.ui.view">
+        <field name="name">user.login.log.tree</field>
+        <field name="model">user.login.log</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="user_id"/>
+                <field name="ip_address"/>
+                <field name="user_agent"/>
+                <field name="login_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="menu_user_login_root" name="Login Logs"/>
+    <menuitem id="menu_user_login_log" name="User Logins" parent="menu_user_login_root"/>
+    <record id="action_user_login_log" model="ir.actions.act_window">
+        <field name="name">Login Logs</field>
+        <field name="res_model">user.login.log</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <menuitem id="menu_user_login_action" name="View Logs" parent="menu_user_login_log" action="action_user_login_log"/>
+</odoo>

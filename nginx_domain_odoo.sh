@@ -1,6 +1,19 @@
 #!/bin/bash
 
 # --- Added feature: Ask for domain or default to localhost ---
+REQUIRED_TOOLS=("systemctl" "nano" "sudo")
+
+echo "Checking required tools..."
+apt update && apt upgrade -y
+for tool in "${REQUIRED_TOOLS[@]}"; do
+  if ! command -v "$tool" &>/dev/null; then
+    echo "$tool is NOT installed."
+    echo "$tool is installing....."
+    apt install "$tool" -y
+  else
+    :
+  fi
+done
 read -p "Enter domain (leave blank to use localhost): " DOMAIN
 DOMAIN=${DOMAIN:-localhost}
 

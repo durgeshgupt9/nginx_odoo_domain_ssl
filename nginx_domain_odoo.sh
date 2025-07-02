@@ -93,7 +93,7 @@ if [ "$SETUP_NGINX" == "y" ]; then
 cat >> docker-compose.yml <<EOF
 
   nginx:
-    image: nginx:alpine
+    image: nginx:latest
     container_name: odoo${ODOO_VERSION}-nginx
     depends_on:
       - odoo
